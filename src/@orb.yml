@@ -1,0 +1,34 @@
+version: 2.1
+
+description: >
+  Easily integrate gg-shield into your Circle CI projects.
+  Scan your commits for secrets and other policy breaks
+  View this orb's source: https://github.com/GitGuardian/gg-shield-orb
+
+executors:
+  ggshield-executor:
+    docker:
+      - image: gitguardian/gg-shield:<<parameters.version>>
+    parameters:
+      version:
+        type: string
+        default: "latest"
+commands:
+  scan-command:
+    steps:
+      - run: ggshield scan -m ci
+jobs:
+  scan:
+    parameters:
+      base_revision:
+        description: pipeline base_revision
+        type: string
+      revision:
+        description: pipeline revision
+        type: string
+    environment:
+      CIRCLE_RANGE: << parameters.base_revision >>...<<parameters.revision>>
+    executor: ggshield-executor
+    steps:
+      - checkout
+      - scan-command
