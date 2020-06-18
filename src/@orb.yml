@@ -1,14 +1,14 @@
 version: 2.1
 
 description: >
-  Easily integrate gg-shield into your Circle CI projects.
+  Easily integrate GitGuardian shield into your Circle CI projects.
   Scan your commits for secrets and other policy breaks
   View this orb's source: https://github.com/GitGuardian/gg-shield-orb
 
 executors:
   ggshield-executor:
     docker:
-      - image: gitguardian/gg-shield:<<parameters.version>>
+      - image: gitguardian/ggshield:<<parameters.version>>
     parameters:
       version:
         type: string

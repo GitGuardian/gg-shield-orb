@@ -8,17 +8,17 @@ Find exposed credentials in your commits.
 
 ## Installation
 
-To add gg-shield to your pipelines configure your `.circleci/config.yml` to add the gg-shield orb:
+To add GitGuardian shield to your pipelines configure your `.circleci/config.yml` to add the ggshield orb:
 
 ```yaml
 orbs:
-  gg-shield: gitguardian/gg-shield
+  gg-shield: gitguardian/ggshield
 
 workflows:
   main:
     jobs:
-      - gg-shield/scan:
-          name: gg-shield-scan # best practice is to name each orb job
+      - ggshield/scan:
+          name: ggshield-scan # best practice is to name each orb job
           base_revision: << pipeline.git.base_revision >>
           revision: <<pipeline.git.revision>>
 ```
