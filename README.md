@@ -1,4 +1,4 @@
-<a href="https://gitguardian.com/"><img src="https://cdn.jsdelivr.net/gh/gitguardian/gg-shield-orb/doc/logo.svg"></a>
+<a href="https://gitguardian.com/"><img src="https://cdn.jsdelivr.net/gh/GitGuardian/gg-shield-orb/doc/logo.svg"></a>
 
 ---
 
