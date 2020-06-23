@@ -1,10 +1,10 @@
-<img src="doc/logo.svg">
+<a href="https://gitguardian.com/"><img src="https://cdn.jsdelivr.net/gh/gitguardian/gg-shield-orb/doc/logo.svg"></a>
 
 ---
 
 # GitGuardian Shield Circle CI Orb
 
-Find exposed credentials in your commits.
+Find exposed credentials in your commits using [gg-shield](https://github.com/GitGuardian/gg-shield).
 
 ## Installation
 
