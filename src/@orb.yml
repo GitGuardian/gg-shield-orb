@@ -3,7 +3,27 @@ version: 2.1
 description: >
   Easily integrate GitGuardian shield into your Circle CI projects.
   Scan your commits for secrets and other policy breaks
-  View this orb's source: https://github.com/GitGuardian/gg-shield-orb
+
+display:
+  source_url: https://github.com/GitGuardian/gg-shield-orb
+  home_url: https://dashboard.gitguardian.com/
+
+examples:
+  scan:
+    description: |
+      Scan commits when they land on VCS. Do not forget to add an environment variable
+      GITGUARDIAN_API_KEY with your API Key in the project settings
+    usage:
+      version: 2.1
+      orbs:
+        gg-shield: gitguardian/ggshield@x.y # This version number refers to the version of the orb
+      workflows:
+        scan_my_commits:
+          jobs:
+            - ggshield/scan:
+                name: ggshield-scan # best practice is to name each orb job
+                base_revision: << pipeline.git.base_revision >>
+                revision: <<pipeline.git.revision>>
 
 executors:
   ggshield-executor:
