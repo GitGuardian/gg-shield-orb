@@ -14,9 +14,9 @@ jobs:
     if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags')
     steps:
       - uses: actions/checkout@v2
-      - name: Set up Python
+      - name: Publish to Circle CI
         run: |
-          circleci orb publish src/@orb.yml gitguardian/ggshield@${{ github.ref }} --token=${{ secrets.CIRCLE_CI_TOKEN }}
+          circleci orb publish src/@orb.yml gitguardian/ggshield@${GITHUB_REF#refs/*/} --token=${{ secrets.CIRCLE_CI_TOKEN }}
 
   release:
     runs-on: ubuntu-latest
