@@ -16,7 +16,7 @@ executors:
 commands:
   scan-command:
     steps:
-      - run: ggshield scan -m ci
+      - run: ggshield scan ci
 jobs:
   scan:
     parameters:
