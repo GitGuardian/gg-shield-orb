@@ -23,8 +23,10 @@ You'll need an **API Key** from [GitGuardian](https://dashboard.gitguardian.com/
 To add GitGuardian shield to your pipelines configure your `.circleci/config.yml` to add the ggshield orb:
 
 ```yaml
+version: 2.1
+
 orbs:
-  gg-shield: gitguardian/ggshield
+  ggshield: gitguardian/ggshield@volatile
 
 workflows:
   main:

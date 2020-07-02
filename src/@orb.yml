@@ -16,7 +16,7 @@ examples:
     usage:
       version: 2.1
       orbs:
-        gg-shield: gitguardian/ggshield@x.y # This version number refers to the version of the orb
+        ggshield: gitguardian/ggshield@x.y # This version number refers to the version of the orb
       workflows:
         scan_my_commits:
           jobs:
