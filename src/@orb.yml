@@ -1,7 +1,7 @@
 version: 2.1
 
 description: >
-  Easily integrate GitGuardian shield into your Circle CI projects.
+  Easily integrate GitGuardian shield into your CircleCI projects.
   Scan your commits for secrets and other policy breaks
 
 display:
@@ -22,33 +22,28 @@ examples:
           jobs:
             - ggshield/scan:
                 name: ggshield-scan # best practice is to name each orb job
-                base_revision: << pipeline.git.base_revision >>
+                base_revision: <<pipeline.git.base_revision>>
                 revision: <<pipeline.git.revision>>
 
-executors:
-  ggshield-executor:
-    docker:
-      - image: gitguardian/ggshield:<<parameters.version>>
-    parameters:
-      version:
-        type: string
-        default: "latest"
-commands:
-  scan-command:
-    steps:
-      - run: ggshield scan ci
+
 jobs:
   scan:
     parameters:
       base_revision:
-        description: pipeline base_revision
+        description: ID of the first commit to scan. Leave empty to only scan the latest commit.
         type: string
+        default: ""
       revision:
-        description: pipeline revision
+        description: ID of the last commit to scan.
         type: string
+      tag:
+        description: Pick a specific gitguardian/ggshield image variant: https://hub.docker.com/r/gitguardian/ggshield/tags
+        default: latest
+        type: string
+    docker:
+      - image: gitguardian/ggshield::<<parameters.tag>>
     environment:
-      CIRCLE_RANGE: << parameters.base_revision >>...<<parameters.revision>>
-    executor: ggshield-executor
+      CIRCLE_RANGE: <<parameters.base_revision>>...<<parameters.revision>>
     steps:
       - checkout
-      - scan-command
+      - run: ggshield scan -v ci

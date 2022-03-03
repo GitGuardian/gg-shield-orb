@@ -2,9 +2,9 @@
 
 ---
 
-# [GitGuardian Shield](https://github.com/GitGuardian/gg-shield) Circle CI Orb
+# [GitGuardian Shield](https://github.com/GitGuardian/gg-shield) CircleCI Orb
 
-[![Circle CI Registry](https://img.shields.io/badge/CircleCI%20Registry-v1-undefined.svg?logo=circleci&logoColor=white&style=for-the-badge)](https://circleci.com/orbs/registry/orb/gitguardian/ggshield)
+[![CircleCI Registry](https://img.shields.io/badge/CircleCI%20Registry-v1-undefined.svg?logo=circleci&logoColor=white&style=for-the-badge)](https://circleci.com/orbs/registry/orb/gitguardian/ggshield)
 [![Docker Image Version (latest semver)](https://img.shields.io/docker/v/gitguardian/ggshield?color=1B2D55&sort=semver&style=for-the-badge&label=ggshield)](https://hub.docker.com/r/gitguardian/ggshield)
 [![License](https://img.shields.io/github/license/GitGuardian/gg-shield-orb?color=%231B2D55&style=for-the-badge)](LICENSE)
 ![GitHub stars](https://img.shields.io/github/stars/gitguardian/gg-shield-orb?color=%231B2D55&style=for-the-badge)
@@ -33,7 +33,7 @@ workflows:
     jobs:
       - ggshield/scan:
           name: ggshield-scan # best practice is to name each orb job
-          base_revision: << pipeline.git.base_revision >>
+          base_revision: <<pipeline.git.base_revision>>
           revision: <<pipeline.git.revision>>
 ```
 
