@@ -1,3 +1,5 @@
+---
+
 version: 2.1
 
 description: >
@@ -11,17 +13,18 @@ display:
 examples:
   scan:
     description: |
-      Scan commits when they land on VCS. Do not forget to add an environment variable
-      GITGUARDIAN_API_KEY with your API Key in the project settings
+      Scan commits when they land on VCS. Do not forget to add an environment
+      variable GITGUARDIAN_API_KEY with your API Key in the project settings
     usage:
       version: 2.1
       orbs:
-        ggshield: gitguardian/ggshield@x.y # This version number refers to the version of the orb
+        # This version number refers to the version of the orb
+        ggshield: gitguardian/ggshield@x.y
       workflows:
         scan_my_commits:
           jobs:
             - ggshield/scan:
-                name: ggshield-scan # best practice is to name each orb job
+                name: ggshield-scan  # best practice is to name each orb job
                 base_revision: <<pipeline.git.base_revision>>
                 revision: <<pipeline.git.revision>>
 
@@ -30,14 +33,18 @@ jobs:
   scan:
     parameters:
       base_revision:
-        description: ID of the first commit to scan. Leave empty to only scan the latest commit.
+        description: |
+          ID of the first commit to scan. Leave empty to only scan the latest
+          commit.
         type: string
         default: ""
       revision:
         description: ID of the last commit to scan.
         type: string
       tag:
-        description: Pick a specific gitguardian/ggshield image variant: https://hub.docker.com/r/gitguardian/ggshield/tags
+        description: |
+          Pick a specific gitguardian/ggshield image variant:
+          https://hub.docker.com/r/gitguardian/ggshield/tags
         default: latest
         type: string
     docker:
