@@ -48,7 +48,7 @@ jobs:
         default: latest
         type: string
     docker:
-      - image: gitguardian/ggshield::<<parameters.tag>>
+      - image: gitguardian/ggshield:<<parameters.tag>>
     environment:
       CIRCLE_RANGE: <<parameters.base_revision>>...<<parameters.revision>>
     steps:
