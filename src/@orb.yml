@@ -53,4 +53,4 @@ jobs:
       CIRCLE_RANGE: <<parameters.base_revision>>...<<parameters.revision>>
     steps:
       - checkout
-      - run: ggshield scan -v ci
+      - run: ggshield secret scan -v ci
