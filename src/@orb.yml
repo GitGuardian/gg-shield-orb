@@ -25,21 +25,15 @@ examples:
           jobs:
             - ggshield/scan:
                 name: ggshield-scan  # best practice is to name each orb job
-                base_revision: <<pipeline.git.base_revision>>
-                revision: <<pipeline.git.revision>>
-
 
 jobs:
   scan:
     parameters:
-      base_revision:
-        description: |
-          ID of the first commit to scan. Leave empty to only scan the latest
-          commit.
+      number_commits_gh:
+        description: number of commits in the GitHub event.
         type: string
-        default: ""
-      revision:
-        description: ID of the last commit to scan.
+      number_commits_gl:
+        description: number of commits in the GitLab event.
         type: string
       tag:
         description: |
@@ -50,7 +44,8 @@ jobs:
     docker:
       - image: gitguardian/ggshield:<<parameters.tag>>
     environment:
-      CIRCLE_RANGE: <<parameters.base_revision>>...<<parameters.revision>>
+      CIRCLE_GH_COMMIT_COUNT: <<pipeline.trigger_parameters.github_app.total_commits_count>>
+      CIRCLE_GL_COMMIT_COUNT: <<pipeline.trigger_parameters.gitlab.total_commits_count>>
     steps:
       - checkout
       - run: ggshield secret scan -v ci
